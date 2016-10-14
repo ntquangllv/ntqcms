@@ -1,0 +1,44 @@
+
+//////////////////////////////////////////////////
+// INSTALLATION
+
+STEP 1: PREQUISITES
+ - Install Docker
+ - Build simple-tech/lemp:1.0 
+
+
+STEP 2: Pull Git
+git pull http://bitbutc //...
+
+
+STEP 3: Build CMS-Dev image
+cd cpanel/dev/docker
+./build
+
+
+STEP 4: Start containers
+bin/docker_build_data_storage.sh
+bin/docker_start.sh
+
+
+STEP 5: Setup directories
+bin/setup_ensure_directories.sh
+
+STEP 6: Setup database
+bin/docker_bash.sh
+mysql -uroot < /tmp/cms.sql
+
+
+//////////////////////////////////////////////////
+// USAGE
+
+## Web
+http://localhost:8081
+
+## Connect to container VM
+bin/docker_bash.sh
+
+## Start/Stop container
+bin/docker_start.sh
+bin/docker_stop.sh
+
